@@ -1,7 +1,8 @@
 {
   "requires": true,
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "production": "pm2 start index.js --name realtime-api"
   },
   "version": "0.0.1",
   "dependencies": {
