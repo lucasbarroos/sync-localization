@@ -1,0 +1,11 @@
+{
+  "requires": true,
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  }
+}

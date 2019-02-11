@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Realtime Communication</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+</head>
+
+<body style="background-color: black; color: white; text-align: center">
+    <script>
+        $(function () {
+            var socket = io();
+            socket.on('event', function (result) {
+                //$('#events').append($('<li>').text(JSON.stringify(event.date)));
+                var actualLoc = { lat: result.lat, lng: result.lng }
+
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: actualLoc,
+                    zoom: 27
+                })
+
+                var map = new google.maps.Map(
+                    document.getElementById('map'), { zoom: 18, center: actualLoc, title: 'Sync Localization' })
+
+                var marker = new google.maps.Marker({ position: actualLoc, map: map, title: 'Sync Localization' })
+            })
+        })
+    </script>
+
+    <div class="page" style="height: 50vh; margin-top: 5%">
+        <h1>Realtime Communication</h1>
+        <div id="events">
+        </div>
+
+        <div id="map"></div>
+        <script>
+            var map;
+            function initMap() {
+                var actualLoc = { lat: -9.3859048, lng: -40.5006034 }
+
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: actualLoc,
+                    zoom: 27
+                })
+
+                var map = new google.maps.Map(
+                    document.getElementById('map'), { zoom: 18, center: actualLoc, title: 'Sync Localization' })
+
+                var marker = new google.maps.Marker({ position: actualLoc, map: map, title: 'Sync Localization' })
+            }
+        </script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_KEY&callback=initMap" async defer></script>
+</body>
+
+<style>
+    #map {
+        height: 100%;
+    }
+
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+</html>
